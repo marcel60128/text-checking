@@ -1,0 +1,19 @@
+// Install the 'spellchecker' library using npm: npm install spellchecker
+
+const spellchecker = require('spellchecker');
+
+function checkSpelling(word) {
+  if (spellchecker.isMisspelled(word)) {
+    const suggestions = spellchecker.getCorrectionsForMisspelling(word);
+    return `The word '${word}' is misspelled. Did you mean: ${suggestions.join(', ')}?`;
+  } else {
+    return `The word '${word}' is spelled correctly.`;
+  }
+}
+
+// Example usage
+const word1 = 'helo';
+console.log(checkSpelling(word1)); // Output: The word 'helo' is misspelled. Did you mean: hello?
+
+const word2 = 'hello';
+console.log(checkSpelling(word2)); // Output: The word 'hello' is spelled correctly.
